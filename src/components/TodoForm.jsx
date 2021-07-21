@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react'
 
 export default function TodoForm(props) {
-    const [input, setInput] = useState("")
+    // const [input, setInput] = useState("")
+    const [input, setInput] = useState(props.edit ? props.edit.value : ""); // to display the current value before edit
 
     const inputRef = useRef(null)
     
