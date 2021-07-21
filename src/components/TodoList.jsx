@@ -24,13 +24,18 @@ export default function TodoList() {
         setTodos(updatedTodos)
     }
 
+    const removeTodo = id => {
+        const afterRemoveArray= [...todos].filter(todo => todo.id !== id) 
+
+        setTodos(afterRemoveArray);
+    }
 
 
     return (
         <div>
             <h1>What's the plan for Today?</h1>
             <TodoForm onSubmit={addTodo}/>
-            <Todo todos ={todos} completeTodo ={completeTodo}/>
+            <Todo todos ={todos} completeTodo ={completeTodo} removeTodo={removeTodo}/>
         </div>
     )
 }
