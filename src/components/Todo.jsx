@@ -28,12 +28,16 @@ export default function Todo({todos,completeTodo, removeTodo, updateTodo}) {
         <div key={todo.id} onClick={() => completeTodo(todo.id)}>
           {todo.text}
         </div>
-        <RiCloseCircleLine
-          onClick={() => removeTodo(todo.id)}
-          className="delete"
-        />
-        <TiEdit onClick={() => setEdit({id: todo.id, value: todo.text})} className="edit" />
-        <div className="icon"></div>
+        <div className="icons">
+          <RiCloseCircleLine
+            onClick={() => removeTodo(todo.id)}
+            className="delete-icon"
+          />
+          <TiEdit
+            onClick={() => setEdit({ id: todo.id, value: todo.text })}
+            className="edit-icon"
+          />
+        </div>
       </div>
     ));
 }
