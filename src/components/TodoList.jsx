@@ -13,6 +13,15 @@ export default function TodoList() {
         const newTodos = [todo, ...todos]
         setTodos(newTodos)
     }
+    
+    const updateTodo = (todoId, newValue) => {
+      // Type-in verification
+        if (!newValue.text || /^\s*$/.test(newValue.text)) {
+          return;
+        }
+        setTodos(prev => prev.map((todo) => (todo.id === todoId? newValue : todo )))
+    }
+
 
     const completeTodo = id => {
         let updatedTodos = todos.map(todo => {
@@ -26,16 +35,16 @@ export default function TodoList() {
 
     const removeTodo = id => {
         const afterRemoveArray= [...todos].filter(todo => todo.id !== id) 
-
         setTodos(afterRemoveArray);
     }
+
 
 
     return (
         <div>
             <h1>What's the plan for Today?</h1>
             <TodoForm onSubmit={addTodo}/>
-            <Todo todos ={todos} completeTodo ={completeTodo} removeTodo={removeTodo}/>
+            <Todo todos ={todos} completeTodo ={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
         </div>
     )
 }
